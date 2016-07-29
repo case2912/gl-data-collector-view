@@ -1,31 +1,47 @@
 import React from "react"
 import ReactDOM from "react-dom"
-
-const Table = () => (
+import {extensions, parameters} from "./target-data.js"
+const parametersColumn = []
+for (var i = 0; i < parameters.length; i++) {
+    parametersColumn.push(
+        <tr>
+            <td>{parameters[i]}</td>
+        </tr>
+    )
+}
+const extensionsColumn = []
+for (var i = 0; i < extensions.length; i++) {
+    extensionsColumn.push(
+        <tr>
+            <td>{extensions[i]}</td>
+        </tr>
+    )
+}
+const ParametersTable = () => (
     <table>
         <tbody>
             <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>C</td>
+                <th>WebGL Extensions</th>
             </tr>
+            {parametersColumn}
+        </tbody>
+    </table>
+)
+const ExtensionsTable = () => (
+    <table>
+        <tbody>
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
+                <th>WebGL parameters</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
+            {extensionsColumn}
         </tbody>
     </table>
 )
 const App = () => (
     <div>
-        <Table/>
+        <ParametersTable/>
+        <ExtensionsTable/>
     </div>
 )
 ReactDOM.render(
-    <App/>, document.getElementById('app'));
+    <App/>, document.getElementById('app'))
